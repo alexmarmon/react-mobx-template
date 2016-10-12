@@ -1,0 +1,80 @@
+{
+  "name": "react-mobx-template",
+  "version": "1.0.0",
+  "description": "Template with React, MobX, Webpack, Hot Reload 3, Airbnb's ESLint, Material UI, and an Express API",
+  "author": "Alex Marmon",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/alexmarmon/react-mobx-template.git"
+  },
+  "scripts": {
+    "dev": "node server.js",
+    "lint": "eslint src",
+    "build": "webpack --progress && node server.js"
+  },
+  "keywords": [
+    "react",
+    "mobx",
+    "hot reload 3",
+    "template",
+    "starter-kit"
+  ],
+  "eslintConfig": {
+    "extends": "airbnb",
+    "parser": "babel-eslint",
+    "globals": {
+      "document": true,
+      "fetch": true,
+      "console": true
+    },
+    "rules": {
+      "no-console": 0
+    }
+  },
+  "babel": {
+    "presets": [
+      "react",
+      "stage-1",
+      [
+        "es2015",
+        {
+          "modules": false
+        }
+      ]
+    ],
+    "plugins": [
+      "transform-decorators-legacy",
+      "transform-class-properties",
+      "react-hot-loader/babel"
+    ]
+  },
+  "devDependencies": {
+    "babel-core": "^6.9.1",
+    "babel-eslint": "^6.1.0",
+    "babel-loader": "^6.2.4",
+    "babel-plugin-transform-decorators-legacy": "^1.3.4",
+    "babel-preset-es2015-native-modules": "^6.6.0",
+    "babel-preset-react": "^6.5.0",
+    "babel-preset-stage-1": "^6.16.0",
+    "eslint": "^3.7.1",
+    "eslint-config-airbnb": "^12.0.0",
+    "eslint-loader": "^1.5.0",
+    "eslint-plugin-import": "^1.16.0",
+    "eslint-plugin-jsx-a11y": "^2.2.3",
+    "eslint-plugin-react": "^6.4.1"
+  },
+  "dependencies": {
+    "compression": "^1.6.2",
+    "express": "^4.14.0",
+    "mobx": "^2.2.2",
+    "mobx-react": "^3.3.1",
+    "mysql": "^2.11.1",
+    "react": "^15.1.0",
+    "react-dom": "^15.1.0",
+    "react-hot-loader": "^3.0.0-beta.2",
+    "react-router": "^2.8.1",
+    "webpack": "^2.1.0-beta.25",
+    "webpack-dev-server": "^2.1.0-beta.9"
+  }
+}
