@@ -15,5 +15,5 @@ open http://localhost:3000
 
 ### Credits
 
-* [mobxjs](https://github.com/mobxjs/mobx-react-boilerplate) with the original boilerplate).
+* [mobxjs](https://github.com/mobxjs/mobx-react-boilerplate) with the original boilerplate.
 
