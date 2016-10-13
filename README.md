@@ -13,6 +13,16 @@ An application that combines:
 * [Mysql](https://github.com/mysqljs/mysql) Version: ^2.11.1
 
 ### Run It
+```
+create creds.json
+add
+{
+  "host": "localhost",
+	"user": "mysql user",
+	"password": "mysql password",
+	"database": "template"
+}
+```
 
 ```
 npm install
