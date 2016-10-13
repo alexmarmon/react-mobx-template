@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import { observer } from 'mobx-react';
 import AppState from './AppState';
 
+const windTurbine = require('./images/windTurbine.svg');
+
 @observer
 
 class App extends Component {
@@ -14,6 +16,7 @@ class App extends Component {
     return (
       <div>
         <div id="header" className="header">
+          <img src={windTurbine} alt="wind turbine" />
           <h2>React MobX Template</h2>
           <h4>A simple start in the right direction</h4>
         </div>
