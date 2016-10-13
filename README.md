@@ -15,9 +15,8 @@ An application that combines:
 ### Run It
 ```
 create creds.json
-add
 {
-  "host": "localhost",
+  	"host": "localhost",
 	"user": "mysql user",
 	"password": "mysql password",
 	"database": "template"
