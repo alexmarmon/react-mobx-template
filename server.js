@@ -22,15 +22,14 @@ if (process.env.npm_lifecycle_event === 'dev') {
 
   app.use('/api', router(express, app));
   app.listen(3030);
-} else if (process.env.npm_lifecycle_event === 'build') {
+} else if (process.env.npm_lifecycle_event === 'test') {
+  app.use('/api', router(express, app));
+} else {
   app.use(compress());
   app.use('/api', router(express, app));
   app.use(express.static('dist'));
   app.listen(3000);
   console.log('Listening at localhost:3000');
-} else if (process.env.npm_lifecycle_event === 'test') {
-  app.use('/api', router(express, app));
-  app.get("/", (req, res) => res.json({message: "Welcome to our Bookstore!"}));
 }
 
 module.exports = app;
