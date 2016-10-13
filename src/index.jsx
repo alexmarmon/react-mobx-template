@@ -4,6 +4,8 @@ import { AppContainer } from 'react-hot-loader';
 import { Router, Route, browserHistory } from 'react-router';
 import AppState from './AppState';
 import App from './App';
+import './base.scss';
+
 
 const appState = new AppState();
 

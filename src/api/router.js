@@ -16,11 +16,11 @@ module.exports = (express) => {
     res.status(500).send(err);
   }
 
-  router.route('/test').get((req, res) => {
-    connection.query('SELECT * FROM deals', (err, rows) => {
+  router.route('/users').get((req, res) => {
+    connection.query('SELECT * FROM users', (err, rows) => {
       if (err) { errHandler(err); }
-      const which = Math.floor((Math.random() * 26) + 1)
-      res.send(rows[which]);
+      const which = Math.floor((Math.random() * 9) + 0);
+      res.header('Content-Type', 'application/json').status(200).send(rows[which]);
     });
   });
 

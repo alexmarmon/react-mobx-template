@@ -7,16 +7,21 @@ import AppState from './AppState';
 class App extends Component {
 
   fetchData = () => {
-    this.props.appState.fetchData();
+    this.props.appState.fetchData('api/users');
   }
 
   render() {
     return (
       <div>
+        <div id="header" className="header">
+          <h2>React MobX Template</h2>
+          <h4>A simple start in the right direction</h4>
+        </div>
         <button onClick={this.fetchData}>
-          Get Data
+          Get User
         </button>
-        <p>{this.props.appState.data.id}</p>
+        <p>{`${this.props.appState.user.first_name} ${this.props.appState.user.last_name}`}</p>
+        <p>{`${this.props.appState.user.phone}`}</p>
       </div>
     );
   }

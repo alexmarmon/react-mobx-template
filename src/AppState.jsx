@@ -1,16 +1,12 @@
 import { observable } from 'mobx';
 
 class AppState {
-  @observable data = 'user';
+  @observable user = { first_name: 'Alex', last_name: 'Marmon', phone: '0123456789' } ;
 
-  fetchData() {
-    fetch('/api/test')
-    .then(response => response.json())
+  fetchData(query) {
+    fetch(query).then(response => response.json())
     .then((response) => {
-      this.data = response;
-    })
-    .catch((e) => {
-      this.data = e;
+      this.user = response;
     });
   }
 }

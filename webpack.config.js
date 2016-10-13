@@ -23,8 +23,18 @@ const dev = {
   resolve: {
     extensions: ['.js', '.jsx'],
   },
+  externals: {
+    'react/addons': true,
+    'react/lib/ExecutionEnvironment': true,
+    'react/lib/ReactContext': true,
+  },
   module: {
     loaders: [
+      {
+        test: /\.scss$/,
+        loaders: ["style", "css", "sass"],
+        exclude: /node_modules/,
+      },
       {
         test: /\.jsx?$/,
         loaders: ['babel'],
