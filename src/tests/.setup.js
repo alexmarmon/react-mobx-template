@@ -10,6 +10,13 @@ require('isomorphic-fetch');
 
 var jsdom = require('jsdom').jsdom;
 
+//svg files break tests... current solution:
+function noop() {
+  return null;
+}
+
+require.extensions['.svg'] = noop;
+
 var exposedProperties = ['window', 'navigator', 'document'];
 
 global.document = jsdom('');
