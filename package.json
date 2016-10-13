@@ -1,7 +1,7 @@
 {
   "name": "react-mobx-template",
   "version": "1.0.0",
-  "description": "Template with React, MobX, Webpack, Hot Reload 3, Airbnb's ESLint, Material UI, and an Express API",
+  "description": "Template with React, MobX, Webpack 2, Hot Reload 3, Airbnb's ESLint, and an Express API",
   "author": "Alex Marmon",
   "license": "MIT",
   "repository": {
