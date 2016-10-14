@@ -1,37 +1,26 @@
-import React, { Component } from 'react';
-import { observer } from 'mobx-react';
-import AppState from './AppState';
+import React from 'react';
+import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import AppState from './state/AppState';
+import Header from './header';
+import Main from './pages/main/Main';
+import About from './pages/about/About';
+// const windTurbine = require('./images/windTurbine.svg');
 
-const windTurbine = require('./images/windTurbine.svg');
+const appState = new AppState();
 
-@observer
+const routes = (
+  <Route path="/" component={Header}>
+    <IndexRoute component={() => (<Main appState={appState} />)} />
+    <Route path="/about" component={() => (<About appState={appState} />)} />
+  </Route>
+);
 
-class App extends Component {
-
-  fetchData = () => {
-    this.props.appState.fetchData('api/users');
-  }
-
-  render() {
-    return (
-      <div>
-        <div id="header" className="header">
-          <img src={windTurbine} alt="wind turbine" />
-          <h2>React MobX Template</h2>
-          <h4>A simple start in the right direction</h4>
-        </div>
-        <button onClick={this.fetchData}>
-          Get User
-        </button>
-        <p>{`${this.props.appState.user.first_name} ${this.props.appState.user.last_name}`}</p>
-        <p>{`${this.props.appState.user.phone}`}</p>
-      </div>
-    );
-  }
-}
-
-App.propTypes = {
-  appState: React.PropTypes.instanceOf(AppState),
-};
+// Current hackary:
+// key={new Date()} (I think) stops
+// the Router from being re-rendered
+// on every hot update
+const App = (() =>
+  <Router key={new Date()} history={browserHistory} routes={routes} />
+);
 
 export default App;

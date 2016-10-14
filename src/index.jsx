@@ -1,33 +1,19 @@
 import React from 'react';
 import { render } from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import { Router, Route, browserHistory } from 'react-router';
-import AppState from './AppState';
-import App from './App';
-import './base.scss';
-
-
-const appState = new AppState();
-
-const routes = (
-  <Route path="/" component={() => (<App appState={appState} />)} />
-);
+import App from './app';
 
 render((
   <AppContainer>
-    <Router history={browserHistory}>
-      {routes}
-    </Router>
+    <App />
   </AppContainer>
 ), document.getElementById('root'));
 
 if (module.hot) {
-  module.hot.accept('./App', () => {
+  module.hot.accept('./app', () => {
     render((
       <AppContainer>
-        <Router history={browserHistory}>
-          {routes}
-        </Router>
+        <App />
       </AppContainer>
     ), document.getElementById('root'));
   });
