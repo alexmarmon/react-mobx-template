@@ -13,18 +13,20 @@ class App extends Component {
   }
 
   render() {
+    const app = this.props.appState;
     return (
       <div>
         <div id="header" className="header">
           <img src={windTurbine} alt="wind turbine" />
           <h2>React MobX Template</h2>
-          <h4>A simple start in the about fdsa</h4>
+          <h4>A simple start.</h4>
+          <h4>About Page</h4>
         </div>
         <button onClick={this.fetchData}>
           Get User
         </button>
-        <p>{`${this.props.appState.user.first_name} ${this.props.appState.user.last_name}`}</p>
-        <p>{`${this.props.appState.user.phone}`}</p>
+        <p>{`${app.fullName}`}</p>
+        <p>{`${app.user.phone}`}</p>
       </div>
     );
   }
