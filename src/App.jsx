@@ -9,7 +9,7 @@ import About from './pages/about/About';
 const appState = new AppState();
 
 const routes = (
-  <Route path="/" component={Header}>
+  <Route path="/" appState={appState} component={Header}>
     <IndexRoute component={() => (<Main appState={appState} />)} />
     <Route path="/about" component={() => (<About appState={appState} />)} />
   </Route>

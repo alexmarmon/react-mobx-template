@@ -57,10 +57,10 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
     'react/lib/ExecutionEnvironment': true,
     'react/lib/ReactContext': true,
   };
-} else if (process.env.npm_lifecycle_event === 'build') {
+} else if (process.env.npm_lifecycle_event === ('build' || 'production')) {
   config.output.publicPath = '/';
   config.devtool = 'cheap-module-source-map';
-  config.entry = ['./src/index'];
+  config.entry = ['whatwg-fetch', './src/index'];
   config.plugins = [
     new webpack.optimize.OccurrenceOrderPlugin(),
     new webpack.optimize.DedupePlugin(),
