@@ -12,7 +12,8 @@
     "dev": "node server.js",
     "lint": "eslint --ext .js --ext .jsx src/; exit 0",
     "build": "webpack --progress && node server.js",
-    "test": "mocha src/tests/.setup.js src/tests/*test.jsx --timeout 10000; exit 0"
+    "test": "mocha src/tests/.setup.js src/tests/*test.jsx --timeout 10000; exit 0",
+    "production": "node server.js"
   },
   "keywords": [
     "react",
@@ -29,10 +30,18 @@
       "fetch": true,
       "console": true,
       "it": true,
-      "describe": true
+      "describe": true,
+      "window": true
     },
     "rules": {
-      "no-console": 0
+      "no-console": 0,
+      "window": true,
+      "jsx-a11y/no-static-element-interactions": 0,
+      "radix": 0,
+      "forbid-prop-types": 0,
+      "react/forbid-prop-types": 0,
+      "no-nested-ternary": 0,
+      "max-len": 0
     }
   },
   "babel": {
@@ -89,9 +98,11 @@
     "mysql": "^2.11.1",
     "react": "^15.1.0",
     "react-dom": "^15.1.0",
+    "react-favicon": "0.0.5",
     "react-hot-loader": "^3.0.0-beta.2",
     "react-router": "^2.8.1",
     "webpack": "^2.1.0-beta.25",
-    "webpack-dev-server": "^2.1.0-beta.9"
+    "webpack-dev-server": "^2.1.0-beta.9",
+    "whatwg-fetch": "^1.0.0"
   }
 }
