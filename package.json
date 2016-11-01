@@ -35,7 +35,7 @@
     },
     "rules": {
       "no-console": 0,
-      "window": true,
+      "window": 0,
       "jsx-a11y/no-static-element-interactions": 0,
       "radix": 0,
       "forbid-prop-types": 0,
