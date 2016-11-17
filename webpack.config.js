@@ -14,12 +14,12 @@ const config = {
     loaders: [
       {
         test: /\.scss$/,
-        loaders: ['style', 'css', 'sass'],
+        loaders: ['style-loader', 'css-loader', 'sass-loader'],
         exclude: /node_modules/,
       },
       {
         test: /\.jsx?$/,
-        loaders: ['babel'],
+        loaders: ['babel-loader'],
         include: path.join(__dirname, 'src'),
       }, {
         test: /\.(jsx?|js)$/,
@@ -30,8 +30,8 @@ const config = {
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
         loaders: [
-          'file?name=[name].[ext]',
-          'image-webpack?optimizationLevel=7&interlaced=false',
+          'file-loader?name=[name].[ext]',
+          'image-webpack-loader?optimizationLevel=7&interlaced=false',
         ],
         exclude: /node_modules/,
       },
@@ -53,9 +53,9 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
     new webpack.NamedModulesPlugin(),
   ];
   config.externals = {
-    'react/addons': true,
-    'react/lib/ExecutionEnvironment': true,
-    'react/lib/ReactContext': true,
+    'react/addons': 'true',
+    'react/lib/ExecutionEnvironment': 'true',
+    'react/lib/ReactContext': 'true',
   };
 } else if (process.env.npm_lifecycle_event === ('build' || 'production')) {
   config.output.publicPath = '/';
