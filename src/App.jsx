@@ -1,26 +1,29 @@
 import React from 'react';
-import { Router, Route, browserHistory, IndexRoute } from 'react-router';
+import { BrowserRouter, Match, Miss } from 'react-router';
 import AppState from './state/AppState';
 import Header from './header';
 import Main from './pages/main/Main';
 import About from './pages/about/About';
-// const windTurbine = require('./images/windTurbine.svg');
 
 const appState = new AppState();
 
-const routes = (
-  <Route path="/" appState={appState} component={Header}>
-    <IndexRoute component={() => (<Main appState={appState} />)} />
-    <Route path="/about" component={() => (<About appState={appState} />)} />
-  </Route>
+const NoMatch = (() =>
+  <div>
+    <h2>Whoops</h2>
+    <p>Sorry but you are lost!</p>
+  </div>
 );
 
-// Current hackary:
-// key={new Date()} (I think) stops
-// the Router from being re-rendered
-// on every hot update
 const App = (() =>
-  <Router key={new Date()} history={browserHistory} routes={routes} />
+  <BrowserRouter>
+    <div>
+      <Match pattern="/" appState={appState} component={Header} />
+      <Match exactly pattern="/" component={() => (<Main appState={appState} />)} />
+      <Match pattern="/about" component={() => (<About appState={appState} />)} />
+      {/* If none of those match, then a sibling `Miss` will render. Except it doesnt work right now. */}
+      <Miss component={NoMatch} />
+    </div>
+  </BrowserRouter>
 );
 
 export default App;

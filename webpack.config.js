@@ -1,11 +1,11 @@
 const path = require('path');
 const webpack = require('webpack');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const config = {
-  output: {
-    path: path.join(__dirname, 'dist'),
-    filename: 'bundle.js',
-    publicPath: '/',
+  context: path.resolve(__dirname, './'),
+  performance: {
+    hints: process.env.npm_lifecycle_event === 'build' ? "warning" : false
   },
   resolve: {
     extensions: ['.js', '.jsx'],
@@ -27,43 +27,62 @@ const config = {
         loader: 'eslint-loader',
         enforce: 'pre',
       },
-      {
-        test: /\.(jpe?g|png|gif|svg)$/i,
-        loaders: [
-          'file-loader?name=[name].[ext]',
-          'image-webpack-loader?optimizationLevel=7&interlaced=false',
-        ],
-        exclude: /node_modules/,
-      },
     ],
   },
+  node: {
+    fs: "empty",
+    net: "empty",
+    tls: "empty",
+  }
 };
 
 if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
+  config.output = {
+    filename: '[name].dev.js',
+    path: path.join(__dirname, 'dev')
+  },
   config.output.publicPath = '/static/';
   config.devtool = 'eval';
-  config.entry = [
-    'react-hot-loader/patch',
-    'webpack-dev-server/client?http://localhost:3000',
-    'webpack/hot/only-dev-server',
-    './src/index',
-  ];
+  config.entry = {
+    "main": [
+      'whatwg-fetch',
+      'react-hot-loader/patch',
+      'webpack-dev-server/client?http://localhost:3000',
+      'webpack/hot/only-dev-server',
+      './src/index',
+    ],
+    "vendor": [
+      'mobx', 'mobx-react', 'mysql', 'react', 'react-dom',
+      'react-hot-loader', 'react-router'
+    ],
+  };
   config.plugins = [
+    new CopyWebpackPlugin([
+      { from: 'images', to: './' },
+    ]),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['vendor', 'manifest']
+    }),
   ];
   config.externals = {
     'react/addons': 'true',
     'react/lib/ExecutionEnvironment': 'true',
     'react/lib/ReactContext': 'true',
   };
-} else if (process.env.npm_lifecycle_event === ('build' || 'production')) {
+} else {
+  config.output = {
+    filename: '[name].js',
+    path: './prod'
+  },
   config.output.publicPath = '/';
   config.devtool = 'cheap-module-source-map';
-  config.entry = ['whatwg-fetch', './src/index'];
+  config.entry = {
+    "main": ['whatwg-fetch', './src'],
+  };
   config.plugins = [
     new webpack.optimize.OccurrenceOrderPlugin(),
-    new webpack.optimize.DedupePlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         unused: true,
@@ -74,9 +93,16 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
         join_vars: true,
         warnings: false,
       },
+      minimize: true
+    }),
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['common'],
+      minChunks: 2,
     }),
     new webpack.DefinePlugin({
-      'process.env.NODE_ENV': "'production'",
+      'process.env': {
+        NODE_ENV: JSON.stringify('production')
+      }
     }),
   ];
 }

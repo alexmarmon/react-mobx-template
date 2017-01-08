@@ -26,10 +26,12 @@ if (process.env.npm_lifecycle_event === 'dev') {
 } else if (process.env.npm_lifecycle_event === 'test') {
   app.use('/api', router(express, app));
 } else {
+  console.log('production server');
+  app.use('/api', router(express, app));
   app.use(bodyParser.json());
   app.use(compress());
-  app.use('/api', router(express, app));
-  app.use(express.static('dist'));
+  app.use(express.static('prod'));
+  app.use('/static', express.static('images'));
   app.listen(3000);
   console.log('Listening at localhost:3000');
 }

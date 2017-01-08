@@ -4,7 +4,7 @@ import './base.scss';
 // const windTurbine = require('./images/windTurbine.svg');
 
 const Header = (({ children }) =>
-  <div>
+  <div data-container>
     <div>
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>
