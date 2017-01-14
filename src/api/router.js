@@ -14,10 +14,6 @@ module.exports = (express) => {
   });
   const router = express.Router(); // eslint-disable-line new-cap
 
-  function errHandler(err, res) {
-    res.status(500).send(err);
-  }
-
   router.route('/users').get((req, res) => {
     knex.select().from('users').then((rows) => {
       const which = Math.floor((Math.random() * 9) + 0);
