@@ -26,7 +26,7 @@ create creds.json
 ```
 
 ```
-npm install
+yarn install
 mysql -u [user] -p template < /path/to/this/repo/template.sql
 npm run dev
 open http://localhost:3000
