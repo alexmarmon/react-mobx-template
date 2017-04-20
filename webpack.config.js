@@ -19,9 +19,10 @@ const config = {
       },
       {
         test: /\.jsx?$/,
-        loaders: ['babel-loader'],
+        loaders: ['react-hot-loader/webpack', 'babel-loader'],
         include: path.join(__dirname, 'src'),
-      }, {
+      },
+      {
         test: /\.(jsx?|js)$/,
         exclude: /node_modules/,
         loader: 'eslint-loader',
@@ -49,7 +50,7 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
       'react-hot-loader/patch',
       'webpack-dev-server/client?http://localhost:3000',
       'webpack/hot/only-dev-server',
-      './src/index',
+      './src/index'
     ],
     "vendor": [
       'mobx', 'mobx-react', 'mysql', 'react', 'react-dom',
@@ -74,7 +75,7 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
 } else {
   config.output = {
     filename: '[name].js',
-    path: './prod'
+    path: path.join(__dirname, 'prod')
   },
   config.output.publicPath = '/';
   config.devtool = 'cheap-module-source-map';

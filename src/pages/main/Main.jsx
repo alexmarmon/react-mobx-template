@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
 import AppState from '../../state/AppState';
 
@@ -10,11 +11,11 @@ class App extends Component {
     this.props.appState.fetchData('api/users');
   }
 
-  render() {
+  render = () => {
     const app = this.props.appState;
     return (
       <div>
-        <div id="header" className="header">
+        <div id="main" className="main">
           <img src="/static/windTurbine.svg" alt="wind turbine" />
           <h2>React MobX Template</h2>
           <h4>A simple start.</h4>
@@ -33,7 +34,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  appState: React.PropTypes.instanceOf(AppState),
+  appState: PropTypes.instanceOf(AppState),
 };
 
 export default App;

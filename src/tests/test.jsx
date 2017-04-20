@@ -17,13 +17,13 @@ describe('<Main />', () => {
 
   it('Renders the header', () => {
     expect(
-      shallow(<Main appState={props} />).find('.header')
+      shallow(<Main appState={props} />).find('.main'),
     ).to.have.length(1);
   });
 
   it('Renders the button', () => {
     expect(
-      shallow(<Main appState={props} />).find('button')
+      shallow(<Main appState={props} />).find('button'),
     ).to.have.length(1);
   });
 });

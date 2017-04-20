@@ -1,5 +1,6 @@
 import React from 'react';
-import { Link } from 'react-router';
+import { Link } from 'react-router-dom';
+import PropTypes from 'prop-types';
 import './base.scss';
 
 const Header = (({ children }) =>
@@ -13,7 +14,7 @@ const Header = (({ children }) =>
 );
 
 Header.propTypes = {
-  children: React.PropTypes.node,
+  children: PropTypes.node,
 };
 
 export default Header;

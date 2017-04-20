@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
 import AppState from '../../state/AppState';
 
@@ -30,7 +31,7 @@ class App extends Component {
 }
 
 App.propTypes = {
-  appState: React.PropTypes.instanceOf(AppState),
+  appState: PropTypes.instanceOf(AppState),
 };
 
 export default App;

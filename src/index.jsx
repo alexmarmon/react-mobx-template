@@ -1,20 +1,20 @@
+import 'react-hot-loader/patch';
 import React from 'react';
-import { render } from 'react-dom';
+import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './app';
 
-render((
-  <AppContainer>
-    <App />
-  </AppContainer>
-), document.getElementById('root'));
+const renderIt = (Component) => {
+  ReactDOM.render(
+    <AppContainer>
+      <Component />
+    </AppContainer>,
+    document.getElementById('root'),
+  );
+};
+
+renderIt(App);
 
 if (module.hot) {
-  module.hot.accept('./app', () => {
-    render((
-      <AppContainer>
-        <App />
-      </AppContainer>
-    ), document.getElementById('root'));
-  });
+  module.hot.accept('./app', () => { renderIt(App); });
 }
