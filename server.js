@@ -32,6 +32,9 @@ if (process.env.npm_lifecycle_event === 'dev') {
   app.use(compress());
   app.use(express.static('prod'));
   app.use('/static', express.static('images'));
+  app.get('/*', function(req, res){
+    res.sendFile(__dirname + '/prod/index.html');
+  });
   app.listen(3000);
   console.log('Listening at localhost:3000');
 }
