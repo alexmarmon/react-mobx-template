@@ -15,19 +15,10 @@ An application that combines:
 * [Yarn](https://yarnpkg.com/en/) Version: 0.23.2
 
 ### Run It
-```
-create creds.json
-{
-  "host": "localhost",
-	"user": "mysql user",
-	"password": "mysql password",
-	"database": "template"
-}
-```
 
 ```
 yarn install
-mysql -u [user] -p template < /path/to/this/repo/template.sql
+
 npm run dev
 open http://localhost:3000
 ```
@@ -45,6 +36,8 @@ npm run test
 ### Build Production and Run
 ```
 npm run build
+
+// final build size should be ~148KB
 ```
 
 

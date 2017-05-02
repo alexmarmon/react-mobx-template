@@ -42,7 +42,6 @@ if (process.env.npm_lifecycle_event === 'dev') {
 } else if (process.env.npm_lifecycle_event === 'test') {
   app.use('/api', router(express, app));
 } else {
-  console.log('production server');
   app.use('/api', router(express, app));
   app.use(bodyParser.json());
   app.use(compress());
