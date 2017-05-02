@@ -44,3 +44,18 @@ npm run build
 ### Credits
 
 * [mobxjs](https://github.com/mobxjs/mobx-react-boilerplate) with the original boilerplate.
+
+
+### Get API Calls working
+```
+vim creds.json
+{
+	"host": "localhost",
+	"user": "mysql user",
+	"password": "mysql password",
+	"database": "template"
+}
+
+mysql -u [user] -p template < /path/to/this/repo/template.sql
+
+```
