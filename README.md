@@ -40,12 +40,6 @@ npm run build
 // final build size should be ~148KB
 ```
 
-
-### Credits
-
-* [mobxjs](https://github.com/mobxjs/mobx-react-boilerplate) with the original boilerplate.
-
-
 ### Get API Calls working
 ```
 vim creds.json
@@ -58,4 +52,11 @@ vim creds.json
 
 mysql -u [user] -p template < /path/to/this/repo/template.sql
 
+// uncomment fetchData function in src/pages/about/About.jsx and src/pages/main/Main.jsx
+
 ```
+
+
+### Credits
+
+* [mobxjs](https://github.com/mobxjs/mobx-react-boilerplate) with the original boilerplate.
