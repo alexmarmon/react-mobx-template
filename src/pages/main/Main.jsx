@@ -8,7 +8,8 @@ import AppState from '../../state/AppState';
 class App extends Component {
 
   fetchData = () => {
-    this.props.appState.fetchData('api/users');
+    // this.props.appState.fetchData('api/users');
+    console.log('api call here');
   }
 
   render = () => {

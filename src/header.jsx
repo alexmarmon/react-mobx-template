@@ -5,7 +5,7 @@ import './base.scss';
 
 const Header = (({ children }) =>
   <div data-container>
-    <div>
+    <div className="header">
       <Link to="/">Home</Link>
       <Link to="/about">About</Link>
     </div>
