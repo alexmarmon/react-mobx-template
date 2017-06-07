@@ -4,10 +4,10 @@ import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
 import App from './app';
 
-const renderIt = (App) => {
+const renderIt = (Component) => {
   ReactDOM.render(
     <AppContainer>
-      <App />
+      <Component />
     </AppContainer>,
     document.getElementById('root'),
   );
