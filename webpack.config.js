@@ -59,7 +59,7 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
   };
   config.plugins = [
     new CopyWebpackPlugin([
-      { from: 'images', to: './' },
+      { from: 'static', to: './' },
     ]),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),

@@ -1,19 +1,22 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
 import AppState from './state/AppState';
-import Header from './header';
-import Main from './pages/main/Main';
+import Header from './shared_modules/header/header';
+import Home from './pages/home/Home';
 import About from './pages/about/About';
+
+// Include SCSS
+import './shared_styles/base.scss';
 
 const appState = new AppState();
 
 const App = (() =>
   <BrowserRouter>
-    <div>
+    <app>
       <Route path="/" appState={appState} component={Header} />
-      <Route exact path="/" component={() => (<Main appState={appState} />)} />
+      <Route exact path="/" component={() => (<Home appState={appState} />)} />
       <Route path="/about" component={() => (<About appState={appState} />)} />
-    </div>
+    </app>
   </BrowserRouter>
 );
 

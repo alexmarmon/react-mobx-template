@@ -3,20 +3,19 @@ import PropTypes from 'prop-types';
 import AppState from '../../state/AppState';
 
 // import modules
-import Text from './modules/text/text';
+import Title from './modules/title/title';
 import User from '../../shared_modules/user/user';
 
 // stateless component
-const About = (({ appState }) =>
+const Home = (({ appState }) =>
   <page>
-    <h4>About Page</h4>
-    <Text copy="Notice that the selected user persists when api calls are working" />
+    <Title />
     <User appState={appState} />
   </page>
 );
 
-About.propTypes = {
+Home.propTypes = {
   appState: PropTypes.instanceOf(AppState),
 };
 
-export default About;
+export default Home;

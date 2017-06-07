@@ -1,25 +1,29 @@
-module.exports = (express) => {
-  // const fs = require('fs'); // eslint-disable-line global-require
-  // const mysql = require('mysql'); // eslint-disable-line global-require
+const express = require('express');
+const fs = require('fs'); // eslint-disable-line global-require
+const mysql = require('mysql'); // eslint-disable-line global-require
 
-  // const creds = JSON.parse(fs.readFileSync('./creds.json'));
-  // const knex = require('knex')({
-  //   client: 'mysql',
-  //   connection: {
-  //     host: creds.host,
-  //     user: creds.user,
-  //     password: creds.password,
-  //     database: creds.database,
-  //   }
-  // });
-  const router = express.Router(); // eslint-disable-line new-cap
+const creds = JSON.parse(fs.readFileSync('./creds.json'));
+const knex = require('knex')({
+  client: 'mysql',
+  connection: {
+    host: creds.host,
+    user: creds.user,
+    password: creds.password,
+    database: creds.database,
+  }
+});
 
-  // router.route('/users').get((req, res) => {
-  //   knex.select().from('users').then((rows) => {
-  //     const which = Math.floor((Math.random() * 9) + 0);
-  //     res.header('Content-Type', 'application/json').status(200).send(rows[which]);
-  //   }).catch((err) => res.status(500).send(err));
-  // });
+// knex.on('query-response', function(result, obj, builder) {
+//   console.log('query:    ', obj.sql);
+//   console.log('vars:     ', obj.bindings);
+//   console.log('response: ', result[0]);
+//   console.log("--------------------------");
+// });
 
-  return router;
-};
+const router = express.Router(); // eslint-disable-line new-cap
+
+// import user routes
+const user = require('./controllers/user');
+router.get('/users', (req, res) => user.getUser(req, res, knex));
+
+module.exports = router;

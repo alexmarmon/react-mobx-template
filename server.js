@@ -37,16 +37,16 @@ if (process.env.npm_lifecycle_event === 'dev') {
     if (err) { console.log(err); }
   });
   app.use(bodyParser.json());
-  app.use('/api', router(express, app));
+  app.use('/api', router);
   app.listen(3030);
 } else if (process.env.npm_lifecycle_event === 'test') {
-  app.use('/api', router(express, app));
+  app.use('/api', router);
 } else {
-  app.use('/api', router(express, app));
+  app.use('/api', router);
   app.use(bodyParser.json());
   app.use(compress());
   app.use(express.static('prod'));
-  app.use('/static', express.static('images'));
+  app.use('/static', express.static('static'));
   app.get('*', function(req, res){
     res.sendFile(__dirname + '/prod/index.html');
   });
