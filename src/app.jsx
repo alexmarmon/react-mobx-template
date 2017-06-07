@@ -5,11 +5,13 @@ import Header from './shared_modules/header/header';
 import Home from './pages/home/Home';
 import About from './pages/about/About';
 
-// Include SCSS
+// include scss
 import './shared_styles/base.scss';
 
+// create global state
 const appState = new AppState();
 
+// define routes
 const App = (() =>
   <BrowserRouter>
     <app>
