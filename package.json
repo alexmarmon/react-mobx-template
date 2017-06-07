@@ -11,7 +11,7 @@
     "build": "webpack --progress && node server.js",
     "test": "mocha src/tests/.setup.js src/tests/*test.jsx --timeout 10000; exit 0",
     "production": "node server.js",
-    "landing page": "mv /src/pages/home/ src/home/; rm -rf src/pages/; rm -rf src/shared_modules/; echo 'Dont forget to edit app.jsx! - Remove all references to <About /> and <Header />'"
+    "landing-page": "mv src/pages/home/ src/; rm -rf src/pages/; rm -rf src/shared_modules/; sed -i -e '4d;6d;19d;20d;' src/app.jsx; sed -ie 's/Header/Home/' src/app.jsx;"
   },
   "keywords": [
     "react",
