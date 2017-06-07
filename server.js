@@ -7,7 +7,12 @@ const bodyParser = require('body-parser')
 const router = require('./src/api/router');
 
 const app = express();
+const port = 3000;
 
+// Use router for API calls
+// app.use('/api', router);
+
+// Development Server - Hot Reload w/ WebpackDevServer & api proxy
 if (process.env.npm_lifecycle_event === 'dev') {
   console.log('Starting Dev Server.... App will be available at localhost:3000');
   new WebpackDevServer(webpack(config), {
@@ -30,19 +35,17 @@ if (process.env.npm_lifecycle_event === 'dev') {
       warnings: false,
       publicPath: false
     },
+    // Create proxy for API with DevServer
     proxy: {
-      '/api/*': 'http://localhost:3030',
+      '/api/*': 'http://localhost:' + (port + 30),
     },
-  }).listen(3000, 'localhost', (err) => {
+  }).listen(port, 'localhost', (err) => {
     if (err) { console.log(err); }
   });
   app.use(bodyParser.json());
-  app.use('/api', router);
-  app.listen(3030);
-} else if (process.env.npm_lifecycle_event === 'test') {
-  app.use('/api', router);
+  app.listen(port + 30);
 } else {
-  app.use('/api', router);
+  // Production Server
   app.use(bodyParser.json());
   app.use(compress());
   app.use(express.static('prod'));
@@ -50,8 +53,8 @@ if (process.env.npm_lifecycle_event === 'dev') {
   app.get('*', function(req, res){
     res.sendFile(__dirname + '/prod/index.html');
   });
-  app.listen(3000);
-  console.log('Listening at localhost:3000');
+  app.listen(port);
+  console.log('Listening at localhost:' + port);
 }
 
 module.exports = app;
