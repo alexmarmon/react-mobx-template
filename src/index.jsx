@@ -2,7 +2,7 @@ import 'react-hot-loader/patch';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { AppContainer } from 'react-hot-loader';
-import App from './app';
+import Routes from './routes';
 
 const renderIt = (Component) => {
   ReactDOM.render(
@@ -13,8 +13,8 @@ const renderIt = (Component) => {
   );
 };
 
-renderIt(App);
+renderIt(Routes);
 
 if (module.hot) {
-  module.hot.accept('./app', () => { renderIt(App); });
+  module.hot.accept('./routes', () => { renderIt(Routes); });
 }

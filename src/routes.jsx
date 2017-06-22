@@ -12,14 +12,14 @@ import './shared_styles/base.scss';
 const appState = new AppState();
 
 // define routes
-const App = (() =>
+const Routes = (() =>
   <BrowserRouter>
-    <app>
+    <div id="app-container">
       <Route path="/" appState={appState} component={Header} />
       <Route exact path="/" component={() => (<Home appState={appState} />)} />
       <Route path="/about" component={() => (<About appState={appState} />)} />
-    </app>
+    </div>
   </BrowserRouter>
 );
 
-export default App;
+export default Routes;
