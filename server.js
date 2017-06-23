@@ -30,9 +30,9 @@ if (process.env.npm_lifecycle_event === 'dev') {
       reasons: false,
       children: false,
       source: false,
-      errors: false,
-      errorDetails: false,
-      warnings: false,
+      errors: true,
+      errorDetails: true,
+      warnings: true,
       publicPath: false
     },
     // Create proxy for API with DevServer

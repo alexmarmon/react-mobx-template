@@ -2,6 +2,27 @@ const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
 
+// custom plugin to pretty print webpack events
+function PrettyPrintPlugin(options) {};
+
+PrettyPrintPlugin.prototype.apply = function(compiler) {
+  compiler.plugin("compile", function(params) {
+    console.log("The compiler is starting to compile...");
+  });
+
+  compiler.plugin("compilation", function(compilation) {
+    console.log("The compiler is starting a new compilation...");
+
+    compilation.plugin("optimize", function() {
+      console.log("The compilation is starting to optimize files...");
+    });
+  });
+
+  compiler.plugin("done", function(compilation, callback) {
+    console.log("Webpack is done");
+  });
+};
+
 const config = {
   context: path.resolve(__dirname, './'),
   performance: {
@@ -63,9 +84,11 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
     ]),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
     }),
+    new PrettyPrintPlugin({options: 'nada'}),
   ];
   config.externals = {
     'react/addons': 'true',
@@ -84,6 +107,7 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
   };
   config.plugins = [
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         unused: true,
