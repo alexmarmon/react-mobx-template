@@ -1,25 +1,77 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const ora = require('ora');
+const cliSpinners = require('cli-spinners');
 
 // custom plugin to pretty print webpack events
 function PrettyPrintPlugin(options) {};
 
+// randomize spinner
+var randomProperty = function (obj) {
+  var keys = Object.keys(obj)
+  return obj[keys[ keys.length * Math.random() << 0]];
+};
+
+// create spinner instance
+const spinner = ora({spinner: randomProperty(cliSpinners)});
+
+// number of rebuilds
+let count = 0;
+
+// create plugin
 PrettyPrintPlugin.prototype.apply = function(compiler) {
   compiler.plugin("compile", function(params) {
-    console.log("The compiler is starting to compile...");
+    // first build, compiling
+    if (count === 0) {
+      console.log('\n----------------');
+      spinner.start('Compiling...');
+    }
+
+    // after first build, adding changes
+    if (count > 0) {
+      spinner.start('Updating...');
+    }
   });
 
   compiler.plugin("compilation", function(compilation) {
-    console.log("The compiler is starting a new compilation...");
-
     compilation.plugin("optimize", function() {
-      console.log("The compilation is starting to optimize files...");
+      // first build, optimizing
+      if (count === 0) {
+        spinner.succeed().start('Optimizing...');
+      }
+
+      // after first build, optimizing changes
+      if (count > 0) {
+        spinner.text = 'Optimizing...';
+      }
     });
   });
 
   compiler.plugin("done", function(compilation, callback) {
-    console.log("Webpack is done");
+    // if first build & error, prompt to fix and exit process
+    if (compilation.compilation.errors && compilation.compilation.errors.length && count === 0) {
+      spinner.fail(compilation.compilation.errors[0]);
+      process.exit();
+    }
+
+    // if second build & error, print error
+    if (compilation.compilation.errors && compilation.compilation.errors.length) {
+      spinner.fail(compilation.compilation.errors[0]);
+    }
+
+    // if first build & no error, print app available
+    if (count === 0) {
+      spinner.succeed();
+      spinner.succeed('App available at localhost:' + process.env['PORT']);
+      console.log('\n');
+    }
+
+    // if not first build & no error, print successful changes
+    if (count > 0) {
+      spinner.succeed('Updated!')
+    }
+    count++;
   });
 };
 

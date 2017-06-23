@@ -8,19 +8,20 @@ const router = require('./src/api/router');
 
 const app = express();
 const port = 3000;
+process.env['PORT'] = port;
 
 // Use router for API calls
 // app.use('/api', router);
 
 // Development Server - Hot Reload w/ WebpackDevServer & api proxy
 if (process.env.npm_lifecycle_event === 'dev') {
-  console.log('Starting Dev Server.... App will be available at localhost:3000');
   new WebpackDevServer(webpack(config), {
     publicPath: config.output.publicPath,
     hot: true,
     historyApiFallback: true,
+    quiet: true,
     stats: {
-      colors: true,
+      colors: false,
       hash: false,
       version: false,
       timings: false,
@@ -30,9 +31,9 @@ if (process.env.npm_lifecycle_event === 'dev') {
       reasons: false,
       children: false,
       source: false,
-      errors: true,
-      errorDetails: true,
-      warnings: true,
+      errors: false,
+      errorDetails: false,
+      warnings: false,
       publicPath: false
     },
     // Create proxy for API with DevServer
@@ -54,7 +55,6 @@ if (process.env.npm_lifecycle_event === 'dev') {
     res.sendFile(__dirname + '/prod/index.html');
   });
   app.listen(port);
-  console.log('Listening at localhost:' + port);
 }
 
 module.exports = app;
