@@ -56,6 +56,10 @@ mysql -u [user] -p template < /path/to/this/repo/template.sql
 
 ```
 
+### Node v8
+```
+brew install libtool automake autoconf nasm
+```
 
 ### Credits
 
