@@ -1,7 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
-const PrettyPrintPlugin = require('../lofty-pretty-print-plugin');
+const PrettyPrintPlugin = require('lofty-pretty-print-plugin');
 
 const config = {
   context: path.resolve(__dirname, './'),
@@ -68,7 +68,7 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
     }),
-    new PrettyPrintPlugin({options: 'nada'}),
+    new PrettyPrintPlugin(),
   ];
   config.externals = {
     'react/addons': 'true',

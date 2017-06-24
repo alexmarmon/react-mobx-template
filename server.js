@@ -11,7 +11,7 @@ const port = 3000;
 process.env['PORT'] = port;
 
 // Use router for API calls
-// app.use('/api', router);
+app.use('/api', router);
 
 // Development Server - Hot Reload w/ WebpackDevServer & api proxy
 if (process.env.npm_lifecycle_event === 'dev') {

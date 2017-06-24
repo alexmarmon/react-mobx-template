@@ -95,6 +95,7 @@
     "express": "^4.15.2",
     "isomorphic-fetch": "^2.2.1",
     "knex": "^0.13.0",
+    "lofty-pretty-print-plugin": "^1.0.0",
     "mobx": "^3.1.9",
     "mobx-react": "^4.1.8",
     "mysql": "^2.11.1",
