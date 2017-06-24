@@ -1,7 +1,7 @@
 {
   "name": "react-mobx-template",
-  "version": "1.0.1",
-  "description": "Template with React, MobX, React Router 4, Webpack 2, Hot Reload 3, Airbnb's ESLint, and an Express API",
+  "version": "1.1.0",
+  "description": "Template with React, MobX, React Router 4, Webpack 3, Hot Reload 3, Airbnb's ESLint, and an Express API",
   "author": "Alex Marmon",
   "license": "MIT",
   "repository": "https://github.com/alexmarmon/react-mobx-template.git",
@@ -20,7 +20,7 @@
     "template",
     "starter-kit",
     "react router 4",
-    "yarn"
+    "webpack 3"
   ],
   "eslintConfig": {
     "extends": "airbnb",
