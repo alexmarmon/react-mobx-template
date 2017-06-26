@@ -4,3 +4,4 @@ npm-debug.log
 creds.json
 dist/*
 !dist/index.html
+prod/
