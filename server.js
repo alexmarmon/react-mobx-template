@@ -20,22 +20,6 @@ if (process.env.npm_lifecycle_event === 'dev') {
     hot: true,
     historyApiFallback: true,
     quiet: true,
-    stats: {
-      colors: false,
-      hash: false,
-      version: false,
-      timings: false,
-      assets: false,
-      chunks: false,
-      modules: false,
-      reasons: false,
-      children: false,
-      source: false,
-      errors: false,
-      errorDetails: false,
-      warnings: false,
-      publicPath: false
-    },
     // Create proxy for API with DevServer
     proxy: {
       '/api/*': 'http://localhost:' + (port + 30),
