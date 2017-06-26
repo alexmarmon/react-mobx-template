@@ -6,10 +6,10 @@
   "license": "MIT",
   "repository": "https://github.com/alexmarmon/react-mobx-template.git",
   "scripts": {
-    "postupdate": "pm2 restart react-mobx-template",
+    "postupdate": "npm run build; pm2 restart template",
     "dev": "node server.js",
     "lint": "eslint --ext .js --ext .jsx src/; exit 0",
-    "build": "webpack --progress && node server.js",
+    "build": "webpack --progress",
     "test": "mocha src/tests/.setup.js src/tests/*test.jsx --timeout 10000; exit 0",
     "production": "node server.js",
     "landing-page": "mv src/pages/home/ src/; rm -rf src/pages/; rm -rf src/shared_modules/; sed -i -e '4d;6d;19d;20d;' src/app.jsx; sed -ie 's/Header/Home/' src/app.jsx; sed -ie 's/\\/pages\\/home/\\/home/' src/app.jsx; rm src/app.jsx-e; rm src/app.jsxe; sed -ie 's/\\.\\.\\/\\.\\.\\//\\.\\.\\//' src/home/Home.jsx; sed -ie 's/\\.\\.\\/\\.\\.\\/\\.\\.\\/\\.\\.\\//\\.\\.\\/\\.\\.\\/\\.\\.\\//g' src/home/modules/title/title.scss; rm src/home/modules/title/title.scsse; rm src/home/Home.jsxe; sed -i -e '7d;12d' src/home/Home.jsx; sed -ie 's/User/Title/' src/home/Home.jsx; rm src/home/Home.jsx-e"
