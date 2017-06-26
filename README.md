@@ -6,13 +6,12 @@ An application that combines:
 * [MobX](https://mobxjs.github.io/mobx) Version: ^3.1.9
 * [React](https://facebook.github.io/react) Version: ^15.5.4
 * [React Router 4](https://github.com/ReactTraining/react-router) Version ^4.1.1
-* [React Hot Loader 3](https://github.com/gaearon/react-hot-boilerplate/pull/61) Version: ^3.0.0-beta.6
-* [Webpack 2](https://github.com/webpack/webpack.js.org) Version: ^2.4.1
+* [React Hot Loader 3](https://github.com/gaearon/react-hot-boilerplate/pull/61) Version: ^3.0.0-beta.7
+* [Webpack 3](https://github.com/webpack/webpack.js.org) Version: ^3.0.0
 * [Enzyme](https://github.com/airbnb/enzyme) Version: ^2.8.2
-* [Airbnb's ESLint](https://github.com/airbnb/javascript) Version: ^14.1.0
+* [Airbnb's ESLint](https://github.com/airbnb/javascript) Version: ^15.0.1
 * [Express](https://expressjs.com/) Version: ^4.15.2
 * [Mysql](https://github.com/mysqljs/mysql) Version: ^2.11.1
-* [Yarn](https://yarnpkg.com/en/) Version: 0.23.2
 
 ### Run It
 
@@ -50,6 +49,9 @@ vim creds.json
 	"database": "template"
 }
 
+// in mysql
+create database template;
+
 mysql -u [user] -p template < /path/to/this/repo/template.sql
 
 // uncomment fetchData function in src/pages/about/About.jsx and src/pages/main/Main.jsx
@@ -60,7 +62,3 @@ mysql -u [user] -p template < /path/to/this/repo/template.sql
 ```
 brew install libtool automake autoconf nasm
 ```
-
-### Credits
-
-* [mobxjs](https://github.com/mobxjs/mobx-react-boilerplate) with the original boilerplate.

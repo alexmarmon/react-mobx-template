@@ -1,6 +1,7 @@
 const path = require('path');
 const webpack = require('webpack');
 const CopyWebpackPlugin = require('copy-webpack-plugin');
+const PrettyPrintPlugin = require('lofty-pretty-print-plugin');
 
 const config = {
   context: path.resolve(__dirname, './'),
@@ -63,9 +64,11 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
     ]),
     new webpack.HotModuleReplacementPlugin(),
     new webpack.NamedModulesPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['vendor', 'manifest']
     }),
+    new PrettyPrintPlugin(),
   ];
   config.externals = {
     'react/addons': 'true',
@@ -84,6 +87,7 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
   };
   config.plugins = [
     new webpack.optimize.OccurrenceOrderPlugin(),
+    new webpack.optimize.ModuleConcatenationPlugin(),
     new webpack.optimize.UglifyJsPlugin({
       compress: {
         unused: true,
