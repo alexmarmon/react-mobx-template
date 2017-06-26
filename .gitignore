@@ -5,3 +5,4 @@ creds.json
 dist/*
 !dist/index.html
 prod/
+!prod/index.html
