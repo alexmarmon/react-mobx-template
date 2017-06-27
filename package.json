@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "https://github.com/alexmarmon/react-mobx-template.git",
   "scripts": {
-    "postreceive": "npm run build -q; pm2 restart template -q;",
+    "postreceive": "echo 'yesss'; npm run build; pm2 restart template;",
     "precommit": "echo 'woahhhh'",
     "dev": "node server.js",
     "lint": "eslint --ext .js --ext .jsx src/; exit 0",
@@ -82,7 +82,6 @@
     "eslint-plugin-import": "^2.2.0",
     "eslint-plugin-jsx-a11y": "^5.0.3",
     "eslint-plugin-react": "^7.1.0",
-    "husky": "^0.14.1",
     "jsdom": "^11.0.0",
     "mocha": "^3.2.0",
     "node-sass": "^4.5.2",
@@ -91,12 +90,14 @@
     "style-loader": "^0.18.2"
   },
   "dependencies": {
+    "babel-preset-es2015": "^6.24.1",
     "body-parser": "^1.15.2",
     "chai": "^4.0.2",
     "chai-http": "^3.0.0",
     "compression": "^1.6.2",
     "enzyme": "^2.8.2",
     "express": "^4.15.2",
+    "husky": "^0.14.1",
     "isomorphic-fetch": "^2.2.1",
     "knex": "^0.13.0",
     "lofty-pretty-print-plugin": "^1.0.0",
