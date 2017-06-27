@@ -6,7 +6,7 @@
   "license": "MIT",
   "repository": "https://github.com/alexmarmon/react-mobx-template.git",
   "scripts": {
-    "postreceive": "echo 'it ran' > /home/sites/react-mobx-template/test.txt; npm run build; pm2 restart template;",
+    "postreceive": "npm run build -q; pm2 restart template -q;",
     "precommit": "echo 'woahhhh'",
     "dev": "node server.js",
     "lint": "eslint --ext .js --ext .jsx src/; exit 0",
