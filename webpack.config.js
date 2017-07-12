@@ -29,6 +29,10 @@ const config = {
         loader: 'eslint-loader',
         enforce: 'pre',
       },
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        loader: 'file-loader?name=fonts/[name].[ext]',
+      }
     ],
   },
   node: {
@@ -102,7 +106,7 @@ if (process.env.npm_lifecycle_event === ('dev' || 'test')) {
     }),
     new webpack.optimize.CommonsChunkPlugin({
       names: ['common'],
-      minChunks: 2,
+      minChunks: 1,
     }),
     new webpack.DefinePlugin({
       'process.env': {

@@ -97,6 +97,7 @@
     "compression": "^1.6.2",
     "enzyme": "^2.8.2",
     "express": "^4.15.2",
+    "file-loader": "^0.11.2",
     "husky": "^0.14.1",
     "isomorphic-fetch": "^2.2.1",
     "knex": "^0.13.0",

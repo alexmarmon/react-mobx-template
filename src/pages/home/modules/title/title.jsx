@@ -8,8 +8,8 @@ const Title = (() =>
   <div className="title-module">
     <img src="/static/windTurbine.svg" alt="wind turbine" />
     <h2>React MobX Template</h2>
-    <h4>A simple start.</h4>
-    <h4>Home Page</h4>
+    <h3>A simple start.</h3>
+    <h3>Home Page</h3>
   </div>
 );
 

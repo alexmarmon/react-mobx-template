@@ -10,7 +10,6 @@ import User from '../../shared_modules/user/user';
 const Home = (({ appState }) =>
   <page>
     <Title />
-    <p>templates</p>
     <User appState={appState} />
   </page>
 );
