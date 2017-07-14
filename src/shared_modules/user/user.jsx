@@ -11,8 +11,8 @@ import './user.scss';
 class User extends Component {
 
   fetchData = () => {
-    // this.props.appState.fetchData('api/users');
-    console.log('api call here');
+    this.props.appState.fetchData('api/users');
+    // console.log('api call here');
   }
 
   render = () => {

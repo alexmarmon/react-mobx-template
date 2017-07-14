@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const WebpackDevServer = require('webpack-dev-server');
-const config = require('./webpack.config');
+const config = require('./webpack.dev');
 const express = require('express');
 const compress = require('compression');
 const bodyParser = require('body-parser')
