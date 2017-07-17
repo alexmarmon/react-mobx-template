@@ -4,6 +4,10 @@ const Merge = require('webpack-merge');
 const CommonConfig = require('./webpack.common.js');
 
 const config = Merge(CommonConfig, {
+  devServer: {
+    stats: 'errors-only',
+  },
+
   entry: {
     main: ['./src'],
     vendor: ['mobx', 'mobx-react', 'react', 'react-dom', 'whatwg-fetch']
