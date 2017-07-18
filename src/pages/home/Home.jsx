@@ -8,11 +8,11 @@ import User from '../../shared_modules/user/user';
 
 // stateless component
 const Home = (({ appState }) =>
-  <page>
+  <div>
     <Title />
     <Component1 />
     <User appState={appState} />
-  </page>
+  </div>
 );
 
 Home.propTypes = {

@@ -8,11 +8,11 @@ import User from '../../shared_modules/user/user';
 
 // stateless component
 const About = (({ appState }) =>
-  <page>
+  <div>
     <h3>About Page</h3>
     <Text copy="Notice that the selected user persists when api calls are working" />
     <User appState={appState} />
-  </page>
+  </div>
 );
 
 About.propTypes = {

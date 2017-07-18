@@ -1,6 +1,7 @@
 const webpack = require('webpack');
+const path = require('path');
 const WebpackDevServer = require('webpack-dev-server');
-const config = require('./webpack.dev');
+const config = require('@lofty/lofty-webpack/webpack.dev.js');
 const express = require('express');
 const compress = require('compression');
 const bodyParser = require('body-parser')
@@ -11,7 +12,7 @@ const port = 3000;
 process.env['PORT'] = port;
 
 // Use router for API calls
-app.use('/api', router);
+// app.use('/api', router);
 
 // Development Server - Hot Reload w/ WebpackDevServer & api proxy
 if (process.env.npm_lifecycle_event === 'dev') {

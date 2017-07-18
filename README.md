@@ -16,15 +16,13 @@ An application that combines:
 ### Run It
 
 ```
-yarn install
-
 npm run dev
-open http://localhost:3000
 ```
 
 ### Run Lint
 ```
 npm run lint
+npm run lint-fix
 ```
 
 ### Run Tests
@@ -35,11 +33,9 @@ npm run test
 ### Build Production and Run
 ```
 npm run build
-
-// final build size should be ~148KB
 ```
 
-### Get API Calls working
+### API Calls
 ```
 vim creds.json
 {
@@ -52,13 +48,5 @@ vim creds.json
 // in mysql
 create database template;
 
-mysql -u [user] -p template < /path/to/this/repo/template.sql
-
-// uncomment fetchData function in src/pages/about/About.jsx and src/pages/main/Main.jsx
-
-```
-
-### Node v8
-```
-brew install libtool automake autoconf nasm
+mysql -u [user] -p template < /path/to/this/repo/src/api/template.sql
 ```
