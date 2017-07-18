@@ -20,10 +20,31 @@ const config = Merge(CommonConfig, {
     ]
   },
 
+  module: {
+    loaders: [
+      {
+        test: /\.scss$/,
+        exclude: /node_modules/,
+        loaders: [
+          { loader: 'style-loader' },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' },
+          { loader: 'postcss-loader',
+            options: {
+              plugins: (loader) => [
+                require('autoprefixer')({browsers: ['last 2 versions']}),
+              ],
+            },
+          },
+        ],
+      },
+    ],
+  },
+
   output: {
     publicPath: '/static/',
     filename: '[name].dev.js',
-    path: path.join(__dirname, 'dev')
+    path: path.join(__dirname, 'dev'),
   },
 
   devtool: 'eval',
@@ -45,7 +66,7 @@ const config = Merge(CommonConfig, {
       names: ['vendor', 'manifest']
     }),
     new PrettyPrintPlugin(),
-  ]
+  ],
 });
 
 module.exports = config;

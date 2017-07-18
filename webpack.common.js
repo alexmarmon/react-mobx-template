@@ -15,11 +15,6 @@ const config = {
   module: {
     loaders: [
       {
-        test: /\.scss$/,
-        loaders: ['style-loader', 'css-loader', 'sass-loader'],
-        exclude: /node_modules/,
-      },
-      {
         test: /\.jsx?$/,
         loaders: ['react-hot-loader/webpack', 'babel-loader'],
         include: path.join(__dirname, 'src'),
@@ -36,7 +31,7 @@ const config = {
       }
     ],
   },
-  
+
   node: {
     fs: "empty",
     net: "empty",
