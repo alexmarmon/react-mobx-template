@@ -7,6 +7,7 @@ class AppState {
     fetch(query).then(response => response.json())
     .then((response) => {
       this.user = response;
+      console.log(response);
     });
   }
 

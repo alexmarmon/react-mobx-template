@@ -25,6 +25,6 @@ const router = express.Router(); // eslint-disable-line new-cap
 // import user routes
 // const user = require('./controllers/user');
 //
-// router.get('/users', (req, res) => user.getUser(req, res, knex));
+// router.get('/users', (req, res) => user.getUser(req, res));
 
 module.exports = router;
