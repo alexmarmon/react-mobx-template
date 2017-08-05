@@ -6,7 +6,7 @@ const WebpackDevServer = require('webpack-dev-server');
 const config = require('@lofty/lofty-webpack/webpack.dev.js');
 const express = require('express');
 const compress = require('compression');
-const bodyParser = require('body-parser')
+const bodyParser = require('body-parser');
 
 const app = express();
 const port = 3000;
