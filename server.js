@@ -1,6 +1,5 @@
 const webpack = require('webpack');
 const path = require('path');
-const http = require('http');
 const chokidar = require('chokidar');
 const WebpackDevServer = require('webpack-dev-server');
 const config = require('@lofty/lofty-webpack/webpack.dev.js');
