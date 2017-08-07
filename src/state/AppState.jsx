@@ -5,10 +5,10 @@ class AppState {
 
   fetchData(query) {
     fetch(query).then(response => response.json())
-    .then((response) => {
-      this.user = response;
-      console.log(response);
-    });
+      .then((response) => {
+        this.user = response;
+        console.log(response);
+      });
   }
 
   @computed get fullName() {
