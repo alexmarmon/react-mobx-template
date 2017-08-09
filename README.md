@@ -12,6 +12,7 @@ An application that combines:
 * [Airbnb's ESLint](https://github.com/airbnb/javascript) Version: ^15.0.1
 * [Express](https://expressjs.com/) Version: ^4.15.2
 * [Mysql](https://github.com/mysqljs/mysql) Version: ^2.11.1
+* [Lofty Config](https://github.com/alexmarmon/lofty-config) Version: ^1.0.0
 
 ### Getting Started
 ```
