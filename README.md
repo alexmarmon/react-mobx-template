@@ -13,8 +13,23 @@ An application that combines:
 * [Express](https://expressjs.com/) Version: ^4.15.2
 * [Mysql](https://github.com/mysqljs/mysql) Version: ^2.11.1
 
-### Run It
+### Getting Started
+```
+vim creds.json
+{
+	"host": "localhost",
+	"user": "mysql user",
+	"password": "mysql password",
+	"database": "template"
+}
 
+// in mysql
+create database template;
+
+mysql -u [user] -p template < /path/to/this/repo/src/api/template.sql
+```
+
+### Run It
 ```
 npm run dev
 ```
@@ -30,23 +45,12 @@ npm run lint-fix
 npm run test
 ```
 
-### Build Production and Run
+### Build Production Files
 ```
 npm run build
 ```
 
-### API Calls
+### Serve Production Files
 ```
-vim creds.json
-{
-	"host": "localhost",
-	"user": "mysql user",
-	"password": "mysql password",
-	"database": "template"
-}
-
-// in mysql
-create database template;
-
-mysql -u [user] -p template < /path/to/this/repo/src/api/template.sql
+npm run production
 ```

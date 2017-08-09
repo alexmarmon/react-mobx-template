@@ -1,6 +1,5 @@
 const express = require('express');
 const fs = require('fs'); // eslint-disable-line global-require
-const mysql = require('mysql'); // eslint-disable-line global-require
 
 const creds = JSON.parse(fs.readFileSync('./creds.json'));
 const knex = require('knex')({

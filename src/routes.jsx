@@ -1,6 +1,6 @@
-import React, { Component } from 'react';
+import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
-import PropTypes from 'prop-types';
+import { Splitted } from '@lofty/lofty-splitted';
 import AppState from './state/AppState';
 import Header from './shared_modules/header/header';
 
@@ -20,21 +20,5 @@ const Routes = (() =>
     </div>
   </BrowserRouter>
 );
-
-// Splitted class to lazy load modules
-class Splitted extends Component {
-  componentWillMount = () => {
-    this.props.load.then((c) => { this.Comp = c; this.forceUpdate(); });
-  };
-  render = () => (
-    this.Comp ? <this.Comp.default appState={this.props.appState} /> : null
-  )
-}
-
-// Splitted props
-Splitted.propTypes = {
-  appState: PropTypes.instanceOf(AppState),
-  load: PropTypes.object,
-};
 
 export default Routes;
