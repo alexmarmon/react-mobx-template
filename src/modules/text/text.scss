@@ -1,0 +1,8 @@
+@import "~styles/_variables";
+@import "~styles/_mixins";
+
+.text-module {
+  p {
+    color: $black;
+  }
+}

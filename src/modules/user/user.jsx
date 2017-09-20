@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { observer } from 'mobx-react';
-import AppState from '../../state/AppState';
+import AppState from 'state/AppState';
 
 // scss
 import './user.scss';
@@ -11,7 +11,6 @@ import './user.scss';
 class User extends Component {
   fetchData = () => {
     this.props.appState.fetchData('api/users');
-    // console.log('api call here');
   }
 
   render = () => {

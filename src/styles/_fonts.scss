@@ -1,9 +1,9 @@
 @import "_variables";
 
 // use google fonts whenever possible
-// example: @include font-face(name, path, weight, style, filenames);
-// @include font-face("Lato", fonts/Lato/Lato-Regular, null, null, ttf);
-// @include font-face("Karla", fonts/Karla/Karla-Regular, null, null, ttf);
+// example: @include font-face("name", "path", weight, style, filenames);
+@include font-face("Lato", "Lato/Lato-Regular", null, null, ttf);
+@include font-face("Karla-Bold", "Karla/Karla-Bold", 800, null, ttf);
 
 html {
   -webkit-font-smoothing: antialiased;
@@ -11,7 +11,7 @@ html {
 }
 
 h1, h2, h3, p {
-  color: $brandDark;
+  color: $brand-dark;
 }
 
 h1 {
@@ -54,7 +54,7 @@ h3 {
 }
 
 p {
-  font-family: "Karla", sans-serif;
+  font-family: "Karla-Bold", sans-serif;
   font-size: 18px;
   font-weight: 400;
   line-height: 1.60;

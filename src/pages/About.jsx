@@ -1,10 +1,10 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import AppState from '../../state/AppState';
+import AppState from 'state/AppState';
 
 // import modules
-import Text from './modules/text/text';
-import User from '../../shared_modules/user/user';
+import Text from 'modules/text/text';
+import User from 'modules/user/user';
 
 // stateless component
 const About = (({ appState }) =>
