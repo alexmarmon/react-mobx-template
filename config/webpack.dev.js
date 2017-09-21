@@ -16,12 +16,11 @@ const config = Merge(CommonConfig, {
       // add fetch polyfill for api requests
       'whatwg-fetch',
       // add application code to bundle
-      path.resolve('./src/index')
+      path.resolve('./src/index'),
     ],
     // add common vendors to seperate build file
     vendor: [
-      'mobx', 'mobx-react', 'react', 'react-dom',
-      'react-hot-loader', 'react-router'
+      'mobx', 'mobx-react', 'react', 'react-dom', 'react-router',
     ]
   },
 
@@ -58,7 +57,6 @@ const config = Merge(CommonConfig, {
   // - https://webpack.js.org/configuration/devtool/
   devtool: '#eval-source-map',
 
-
   externals: {
     'react/addons': 'true',
     'react/lib/ExecutionEnvironment': 'true',
@@ -84,6 +82,11 @@ const config = Merge(CommonConfig, {
     new PrettyPrintPlugin(),
     // This plugin will cause the relative path of the module to be displayed
     new webpack.NamedModulesPlugin(),
+    // https://webpack.js.org/plugins/commons-chunk-plugin/
+    new webpack.optimize.CommonsChunkPlugin({
+      names: ['common', 'vendor'],
+      minChunks: Infinity
+    }),
   ],
 });
 

@@ -89,6 +89,7 @@ const config = Merge.smartStrategy({
     }),
     // https://webpack.js.org/plugins/module-concatenation-plugin/
     new webpack.optimize.ModuleConcatenationPlugin(),
+    // https://webpack.js.org/plugins/commons-chunk-plugin/
     new webpack.optimize.CommonsChunkPlugin({
       names: ['common', 'vendor'],
       minChunks: Infinity

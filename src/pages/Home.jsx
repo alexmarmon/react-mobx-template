@@ -6,15 +6,15 @@ import Title from 'modules/title/title';
 import User from 'modules/user/user';
 
 // stateless component
-const Home = (({ appState }) =>
+const Home = (({ state }) =>
   <div>
     <Title />
-    <User appState={appState} />
+    <User state={state} />
   </div>
 );
 
 Home.propTypes = {
-  appState: PropTypes.instanceOf(AppState),
+  state: PropTypes.instanceOf(AppState),
 };
 
 export default Home;

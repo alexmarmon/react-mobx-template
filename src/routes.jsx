@@ -18,8 +18,8 @@ const Routes = (() =>
   <BrowserRouter>
     <div id="app-container">
       <Route path="/" component={Header} />
-      <Route exact path="/" component={() => <Home appState={appState} />} />
-      <Route path="/about" component={() => <About appState={appState} />} />
+      <Route exact path="/" component={() => <Home state={appState} />} />
+      <Route path="/about" component={() => <About state={appState} />} />
     </div>
   </BrowserRouter>
 );

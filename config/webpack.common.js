@@ -28,7 +28,7 @@ const config = {
       {
         // es6 -> es5
         test: /\.(jsx?|js)$/,
-        use: ['react-hot-loader/webpack', 'babel-loader'],
+        use: ['babel-loader'],
         include: path.resolve('./src'),
       },
       {

@@ -6,29 +6,26 @@ import AppState from 'state/AppState';
 // scss
 import './user.scss';
 
-@observer
+@observer // https://mobx.js.org/refguide/observer-component.html
 
 class User extends Component {
   fetchData = () => {
-    this.props.appState.fetchData('api/users');
+    this.props.state.fetchData('api/users');
   }
 
-  render = () => {
-    const app = this.props.appState;
-    return (
-      <div className="user-module">
-        <button onClick={this.fetchData}>
-          Get User
-        </button>
-        <p>{`${app.fullName}`}</p>
-        <p>{`${app.user.phone}`}</p>
-      </div>
-    );
-  }
+  render = () => (
+    <div className="user-module">
+      <button onClick={this.fetchData}>
+        Get User
+      </button>
+      <p>{`${this.props.state.fullName}`}</p>
+      <p>{`${this.props.state.user.phone}`}</p>
+    </div>
+  )
 }
 
 User.propTypes = {
-  appState: PropTypes.instanceOf(AppState),
+  state: PropTypes.instanceOf(AppState),
 };
 
 export default User;

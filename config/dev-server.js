@@ -35,13 +35,13 @@ watcher.on('ready', function() {
 // devMiddleware serves the files emitted from webpack over a connect server
 const devMiddleware = require('webpack-dev-middleware')(compiler, {
   publicPath: path.resolve('/'),
-  quiet: true
+  quiet: true,
 });
 
 // hotMiddleware hot reloads the files served from devMiddleware
 const hotMiddleware = require('webpack-hot-middleware')(compiler, {
   log: false,
-  heartbeat: 2000
+  heartbeat: 2000,
 });
 
 // proxy api requests to backend
