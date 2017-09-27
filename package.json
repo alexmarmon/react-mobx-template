@@ -6,12 +6,12 @@
   "license": "MIT",
   "repository": "https://github.com/alexmarmon/react-mobx-template.git",
   "scripts": {
-    "dev": "cross-env PORT=3000 node config/dev-server.js",
+    "dev": "cross-env PORT=4000 node config/dev-server.js",
     "lint": "eslint --ext .js --ext .jsx src/; exit 0",
     "lint-fix": "eslint --fix --ext .js --ext .jsx src/; exit 0",
-    "build": "cross-env PORT=3000 webpack --config config/webpack.prod.js --progress --colors --optimize-minimize",
-    "test": "cross-env PORT=3000 node_modules/.bin/ava src/tests",
-    "production": "cross-env PORT=3000 node config/prod-server.js"
+    "build": "cross-env PORT=4000 webpack --config config/webpack.prod.js --progress --colors --optimize-minimize",
+    "test": "cross-env PORT=4000 node_modules/.bin/ava src/tests",
+    "production": "cross-env PORT=4000 node config/prod-server.js"
   },
   "keywords": [
     "react",
