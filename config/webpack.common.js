@@ -37,7 +37,12 @@ const config = {
         test: /\.(jsx?|js)$/,
         exclude: /node_modules/,
         include: path.resolve('./src'),
-        use: 'eslint-loader',
+        use: [{
+          loader: 'eslint-loader',
+          options: {
+            emitWarning: true,
+          },
+        }],
         enforce: 'pre',
       },
       {
