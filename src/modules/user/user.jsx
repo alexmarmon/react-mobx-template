@@ -1,16 +1,14 @@
-import React, { Component } from 'react';
-import PropTypes from 'prop-types';
-import { observer } from 'mobx-react';
-import AppState from 'state/AppState';
+import React, { Component } from 'react'
+import { observer } from 'mobx-react'
 
 // scss
-import './user.scss';
+import './user.scss'
 
 @observer // https://mobx.js.org/refguide/observer-component.html
 
-class User extends Component {
+export default class User extends Component {
   fetchData = () => {
-    this.props.state.fetchData('api/users');
+    this.props.state.fetchData('api/users')
   }
 
   render = () => (
@@ -23,9 +21,3 @@ class User extends Component {
     </div>
   )
 }
-
-User.propTypes = {
-  state: PropTypes.instanceOf(AppState),
-};
-
-export default User;

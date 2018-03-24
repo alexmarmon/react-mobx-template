@@ -10,7 +10,7 @@ const proxyMiddleware = require('http-proxy-middleware');
 const port = parseInt(process.env.PORT);
 
 // define webpack setup as compiler
-const compiler = webpack(require('./webpack.dev.js'));
+const compiler = webpack(require('./webpack.config.dev.js'));
 
 // create express instance
 const app = express();

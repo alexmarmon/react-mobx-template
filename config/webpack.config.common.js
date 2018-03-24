@@ -10,6 +10,18 @@ const config = {
     hints: process.env.npm_lifecycle_event === 'build' ? "warning" : false
   },
 
+  optimization: {
+    splitChunks: {
+      cacheGroups: {
+        commons: {
+          test: /[\\/]node_modules[\\/]/,
+          name: "vendors",
+          chunks: "all"
+        }
+      }
+    }
+  },
+
   resolve: {
     // automatically resolve these extensions when importing
     // ex : import file from './modules/file.js' => import file from './modules/file'

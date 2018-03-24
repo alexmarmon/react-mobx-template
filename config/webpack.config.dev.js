@@ -1,13 +1,16 @@
-const path = require('path');
-const webpack = require('webpack');
-const Merge = require('webpack-merge');
-const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CopyWebpackPlugin = require('copy-webpack-plugin');
-const PrettyPrintPlugin = require('@lofty/lofty-pretty-print-plugin');
-const CommonConfig = require('./webpack.common.js');
+const path = require('path')
+const webpack = require('webpack')
+const Merge = require('webpack-merge')
+const HtmlWebpackPlugin = require('html-webpack-plugin')
+const DevLogs = require('./webpack.plugin.dev-logs.js')
+// const CopyWebpackPlugin = require('copy-webpack-plugin');
+// const PrettyPrintPlugin = require('@lofty/lofty-pretty-print-plugin');
+const CommonConfig = require('./webpack.config.common.js')
 
 // merge dev environment config with common config
 const config = Merge(CommonConfig, {
+  mode: 'development',
+
   entry: {
     main: [
       // add webpack-hot-middleware to bundle and
@@ -19,9 +22,9 @@ const config = Merge(CommonConfig, {
       path.resolve('./src/index'),
     ],
     // add common vendors to seperate build file
-    vendor: [
-      'mobx', 'mobx-react', 'react', 'react-dom', 'react-router',
-    ]
+    // vendor: [
+    //   'mobx', 'mobx-react', 'react', 'react-dom', 'react-router',
+    // ],
   },
 
   module: {
@@ -36,8 +39,8 @@ const config = Merge(CommonConfig, {
           { loader: 'sass-loader' },
           { loader: 'postcss-loader',
             options: {
-              plugins: (loader) => [
-                require('autoprefixer')({browsers: ['last 2 versions']}),
+              plugins: loader => [
+                require('autoprefixer')({ browsers: ['last 2 versions'] }), // eslint-disable-line
               ],
             },
           },
@@ -65,29 +68,37 @@ const config = Merge(CommonConfig, {
 
   plugins: [
     // create global constants
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"development"'
-      }
-    }),
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     NODE_ENV: '"development"',
+    //   },
+    // }),
     // enable hot reload - webpack-hot-middleware
     new webpack.HotModuleReplacementPlugin(),
     // serve index.html file to client and auto inject script tags
     new HtmlWebpackPlugin({
       filename: 'index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
     }),
+    // new CommonsChunkPlugin({
+    //   name: "vendors",
+    //   minChunks: module => {
+    //     return module.resource && /react|mobx|react-mobx|react-dom|react-router/.test(module.resource);
+    //   }
+    // }),
     // custom pretty print output
-    new PrettyPrintPlugin(),
+    // new PrettyPrintPlugin(),
     // This plugin will cause the relative path of the module to be displayed
-    new webpack.NamedModulesPlugin(),
+    // new webpack.NamedModulesPlugin(),
     // https://webpack.js.org/plugins/commons-chunk-plugin/
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['common', 'vendor'],
-      minChunks: Infinity
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   names: ['common', 'vendor'],
+    //   minChunks: Infinity,
+    // }),
+    // include custom fun print plugin
+    // new DevLogs(),
   ],
-});
+})
 
-module.exports = config;
+module.exports = config

@@ -1,25 +1,26 @@
 const path = require('path');
 const webpack = require('webpack');
 const Merge = require('webpack-merge');
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
+// const ExtractTextPlugin = require('extract-text-webpack-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
-const CommonConfig = require('./webpack.common.js');
+const MiniCssExtractPlugin = require("mini-css-extract-plugin");
+const CommonConfig = require('./webpack.config.common.js');
 
 // use smart strategy to force replacement
 // of the following configs
 // - https://github.com/survivejs/webpack-merge
 const config = Merge.smartStrategy({
   'module.entry': 'replace',
-  'module.rules': 'replace'
+  'module.rules': 'replace',
 })(CommonConfig, {
+
+  mode: 'production',
 
   entry: {
     // add application code to bundle
     main: [
-      path.resolve('./src/index')
-    ],
-    // create vendor file that can be cached by user
-    vendor: ['mobx', 'mobx-react', 'react', 'react-dom', 'whatwg-fetch']
+      path.resolve('./src/index'),
+    ]
   },
 
   module: {
@@ -30,20 +31,33 @@ const config = Merge.smartStrategy({
         exclude: /node_modules/,
         include: path.resolve('./src'),
         // extract css bundle to seperate file
-        use: ExtractTextPlugin.extract({
-          fallback: 'style-loader',
-          use: [
-            { loader: 'css-loader' },
-            { loader: 'sass-loader' },
-            { loader: 'postcss-loader',
-              options: {
-                plugins: (loader) => [
-                  require('autoprefixer')({browsers: ['last 2 versions']}),
-                ],
-              },
+        use: [
+          { loader: MiniCssExtractPlugin.loader },
+          { loader: 'css-loader' },
+          { loader: 'sass-loader' },
+          { loader: 'postcss-loader',
+            options: {
+              plugins: loader => [
+                require('autoprefixer')({ browsers: ['last 2 versions'] }),
+              ],
             },
-          ],
-        }),
+          }
+        ]
+        // use: ExtractTextPlugin.extract({
+        //   fallback: 'style-loader',
+        //   use: [
+        //     MiniCssExtractPlugin.loader,
+        //     { loader: 'css-loader' },
+        //     { loader: 'sass-loader' },
+        //     { loader: 'postcss-loader',
+        //       options: {
+        //         plugins: loader => [
+        //           require('autoprefixer')({ browsers: ['last 2 versions'] }),
+        //         ],
+        //       },
+        //     },
+        //   ],
+        // }),
       },
       {
         // es6 -> es5
@@ -65,7 +79,7 @@ const config = Merge.smartStrategy({
         test: /\.(woff|woff2|eot|ttf|otf)$/,
         use: 'file-loader?name=fonts/[name].[ext]',
         include: path.resolve('./src'),
-      }
+      },
     ],
   },
 
@@ -82,26 +96,32 @@ const config = Merge.smartStrategy({
 
   plugins: [
     // create global constants
-    new webpack.DefinePlugin({
-      'process.env': {
-        NODE_ENV: '"production"'
-      }
-    }),
+    // new webpack.DefinePlugin({
+    //   'process.env': {
+    //     NODE_ENV: '"production"',
+    //   },
+    // }),
     // https://webpack.js.org/plugins/module-concatenation-plugin/
-    new webpack.optimize.ModuleConcatenationPlugin(),
+    // new webpack.optimize.ModuleConcatenationPlugin(),
     // https://webpack.js.org/plugins/commons-chunk-plugin/
-    new webpack.optimize.CommonsChunkPlugin({
-      names: ['common', 'vendor'],
-      minChunks: Infinity
-    }),
+    // new webpack.optimize.CommonsChunkPlugin({
+    //   names: ['common', 'vendor'],
+    //   minChunks: Infinity,
+    // }),
     // plugin to extract css into single file
-    new ExtractTextPlugin({ filename: '[name].css', allChunks: true, }),
+    // new ExtractTextPlugin({ filename: '[name].css', allChunks: true }),
     // create index.html file
     new HtmlWebpackPlugin({
       filename: '../index.html',
       template: 'index.html',
-      inject: true
+      inject: true,
     }),
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: "[name].css",
+      chunkFilename: "[id].css"
+    })
   ],
 });
 
