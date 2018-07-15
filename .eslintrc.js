@@ -26,7 +26,9 @@ module.exports = {
     "object-curly-newline": 0,
     "class-methods-use-this": 0,
     "jsx-a11y/click-events-have-key-events": 0,
-    "jsx-a11y/no-static-element-interactions": 0
+    "jsx-a11y/no-static-element-interactions": 0,
+    "no-nested-ternary": 0,
+    "no-return-assign": 0
   },
   "env": {
     "browser": true,
