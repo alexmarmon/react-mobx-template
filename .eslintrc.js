@@ -28,7 +28,8 @@ module.exports = {
     "jsx-a11y/click-events-have-key-events": 0,
     "jsx-a11y/no-static-element-interactions": 0,
     "no-nested-ternary": 0,
-    "no-return-assign": 0
+    "no-return-assign": 0,
+    "react/sort-comp": 0
   },
   "env": {
     "browser": true,

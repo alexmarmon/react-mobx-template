@@ -1,23 +1,28 @@
 import React, { Component } from 'react'
 import { observer } from 'mobx-react'
-
-// scss
+import { observable } from 'mobx'
+import state from '../../state/AppState'
 import './user.scss'
 
-@observer // https://mobx.js.org/refguide/observer-component.html
+@observer class User extends Component { // https://mobx.js.org/refguide/observer-component.html
+  @observable ticker = 0
 
-export default class User extends Component {
-  fetchData = () => {
-    this.props.state.fetchData('api/users')
+  componentDidMount() {
+    setInterval(() => this.ticker += 1, 1000)
   }
+
+  fetch = () => state.fetchData('api/users')
 
   render = () => (
     <div className="user-module">
-      <button onClick={this.fetchData}>
+      <button onClick={this.fetch}>
         Get User
       </button>
-      <p>{`${this.props.state.fullName}`}</p>
-      <p>{`${this.props.state.user.phone}`}</p>
+      <p>{`${state.fullName}`}</p>
+      <p>{`${state.user.phone}`}</p>
+      <p>{`${this.ticker}`}</p>
     </div>
   )
 }
+
+export default User
